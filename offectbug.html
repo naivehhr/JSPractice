@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #div1{
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      background: red;
+      border: 1px solid black;
+    }
+    #div2{
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      background: red;
+      border: 1px solid black;
+    }
+  </style>
+  <script>
+    function getStyle(obj, name) {
+      if(obj.currentStyle) {
+        return obj.currentStyle[name]
+      } else {
+        return getComputedStyle(obj, false)[name]
+      }
+    }
+   
+   window.onload = function(){
+     var oDiv1 = document.getElementById('div1')
+     oDiv1.onmouseover = function() {
+      startMove(this, 'height', 400)
+     }
+     oDiv1.onmouseout = function(){
+       startMove(this, 'height', 200)
+     }
+
+     var oDiv2 = document.getElementById('div2')
+     oDiv2.onmouseover = function() {
+      startMove(this, 'width', 400)
+     }
+     oDiv2.onmouseout = function(){
+       startMove(this, 'width', 200)
+     }
+   }
+
+    function startMove(obj, attr, iTarget) {
+			clearInterval(obj.timer)
+			obj.timer = setInterval(function(){
+        var cur = parseInt(getStyle(obj, attr))
+				var speed = (iTarget - cur) / 6;
+				speed = speed > 0?Math.ceil(speed): Math.floor(speed);
+				if(cur == iTarget) {
+					clearInterval(obj.timer)
+				} else {
+					obj.style[attr]=cur + speed + 'px'
+				}
+			}, 30)
+		}
+  </script>
+</head>
+<body>
+  <div id="div1">高度变化</div>
+  <div id="div2">宽度变化</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="startMove.js"></script>
+  <title>Document</title>
+  <style>
+    #contain {
+      width: 400px;
+      height: 200px;
+    }
+
+    .imgContain {
+      width: 400px;
+      height: 200px;
+      position: absolute;
+      overflow: hidden;
+    }
+
+    img {
+      width: 400px;
+      height: 200px;
+    }
+
+    #zz {
+      position: absolute;
+      top: 170px;
+      width: 400px;
+      height: 30px;
+      opacity: 0.5;
+      background: gray;
+    }
+  </style>
+  <script>
+    // 此例子就是动态改变图片了，如果要写成组件的话，还需要其他部分的支持
+    function change() {
+      var max = 3;
+      var min = 1;
+      var index = Math.floor(Math.random()*(max-min+1)+min); // 指定范围内随机
+      var aImgContain = document.getElementsByClassName('imgContain')
+      // console.log(aImgContain)
+      for(var i = 0; i < aImgContain.length; i++) {
+        var oImgContain = aImgContain[i]
+        if(i == index - 1) {
+          oImgContain.style.zIndex = 1
+          oImgContain.style.height = 0;
+          startMove(oImgContain, 'height', 200)
+        } else {
+          oImgContain.style.zIndex = 0
+        }
+      } 
+      // startMove(oImgContain, 'height', 200)
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="change()">换图</button>
+  <div id="contain">
+    <div class="imgContain">
+      <img id="1" src="img/1.jpg" alt="">
+      <div id="zz"></div>
+    </div>
+    <div class="imgContain">
+      <img id="2" src="img/2.jpg" alt="">
+      <div id="zz"></div>
+    </div>
+    <div class="imgContain">
+      <img id="3" src="img/3.jpg" alt="">
+      <div id="zz"></div>
+    </div>
+  </div>
+</body>
+
+</html>
