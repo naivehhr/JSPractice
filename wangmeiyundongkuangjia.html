@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="startMove2.js"></script>
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #div1 {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      background: red;
+      opacity: 0.5;
+      border: 1px solid black;
+    }
+  </style>
+  <script>
+
+    window.onload = function () {
+      var oDiv1 = document.getElementById('div1')
+
+      oDiv1.onmouseover = function() {
+        startMove(this, {
+          'width': 250,
+          'height': 400,
+          'opacity': 100
+        })
+      }
+
+      oDiv1.onmouseout = function() {
+        startMove(this, {
+          'width': 200,
+          'height': 200,
+          'opacity': 50
+        })
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div id="div1">一起变化</div>
+</body>
+
+</html>
