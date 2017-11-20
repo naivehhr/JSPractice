@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="startMove2.js"></script>
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0
+		}
+
+		#ul1 {
+			width: 400px;
+			height: 400px;
+			border: 1px solid black;
+			margin: 0 auto;
+			overflow: hidden
+		}
+
+		#ul1 li {
+			border-bottom: 1px #999 dashed;
+			padding: 4px;
+			list-style: none;
+			word-break: break-all;
+			overflow: hidden;
+			opacity: 0;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			let oBtn = document.getElementById('btn1')
+			let oUl = document.getElementById("ul1")
+			let oTxt = document.getElementById("txt1")
+
+			oBtn.onclick = function () {
+				let oLi = document.createElement("li")
+				if(!oTxt.value) return 
+				oLi.innerHTML = oTxt.value;
+				oTxt.value = '';
+				if (oUl.children.length > 0) {
+					oUl.insertBefore(oLi, oUl.children[0])
+				} else {
+					oUl.appendChild(oLi)
+				}
+				// 运动
+				let iHeight = oLi.offsetHeight;
+				oLi.style.height = '0'
+				startMove(oLi, {'height': iHeight}, ()=> {
+					startMove(oLi, {opacity: 100})
+				})
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<textarea name="" id="txt1" cols="40" rows="4"></textarea>
+	<input id="btn1" type="button" value="发布">
+	<ul id="ul1">
+		<li>asdf</li>
+	</ul>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="startMove2.js"></script>
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#play {
+			width: 400px;
+			height: 200px;
+			background: yellow;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.active {
+			display: flex;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+
+		.box {
+			width: 20px;
+			height: 20px;
+			margin-left: 10px;
+			opacity: .5;
+			box-sizing: border-box;
+			background: rgb(221, 223, 66);
+		}
+
+		img {
+			width: 400px;
+			height: 200px;
+		}
+
+		ul {
+			position: absolute;
+		}
+
+		li {
+			text-align: center;
+			list-style: none;
+			font-size: 0;
+		}
+
+		.box:hover {
+			opacity: 1;
+			border: 1px solid;
+		}
+
+		span {
+			font-size: 16px;
+		}
+	</style>
+	<script>
+		function move() {
+			let oUl = document.getElementById('_ul')
+			startMove(oUl, {
+				'top': -200
+			})
+		}
+
+		window.onload = function () {
+			let aLi = document.getElementsByClassName('box')
+			let oUl = document.getElementById("_ul")
+			for (let i = 0; i < aLi.length; i++) {
+				aLi[i].onclick = function () {
+					startMove(oUl, {
+						'top': -200 * i
+					})
+				}
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div id="play">
+		<ul id="_ul">
+			<li>
+				<img src="img/1.jpg" alt="">
+			</li>
+			<li>
+				<img src="img/2.jpg" alt="">
+			</li>
+			<li>
+				<img src="img/3.jpg" alt="">
+			</li>
+		</ul>
+		<ol class="active">
+			<li class="box">
+				<span>1</span>
+			</li>
+			<li class="box">
+				<span>2</span>
+			</li>
+			<li class="box">
+				<span>3</span>
+			</li>
+		</ol>
+	</div>
+	</div>
+</body>
+
+</html>
