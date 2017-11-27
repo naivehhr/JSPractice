@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			background: rebeccapurple;
+			display: none;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			var oBtn = document.getElementById('btn1')
+			var oDiv = document.getElementById('div1')
+
+			oBtn.onclick = function(ev) {
+				var oEvent = ev || event
+				oDiv.style.display = 'block'
+				// oEvent.cancelable = true;
+				oEvent.cancelBubble = true;  // 取消冒泡
+			}
+
+			document.onclick = function() {
+				oDiv.style.display = 'none'
+			}
+		}
+	</script>
+	<body>
+		<button type="" id="btn1">点击</button>
+		<div id="div1"></div>
+	</body>
+</html>

@@ -4,26 +4,30 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="util.js"></script>
 	<title>Document</title>
 </head>
 <style>
 	#div1 {
-		width: 200px;
-		height: 200px;
+		width: 100px;
+		height: 100px;
 		background: red;
 		position: absolute;
 	}
 </style>
 <script>
-	document.onmousemove = function(ev) {
+	// document.onkeydown = function(ev) {
+	// 	alert(ev.keyCode)
+	// }
+	document.onkeydown = function(ev) {
 		var oDiv = document.getElementById('div1')
-		var pos = getPos(ev)
-		oDiv.style.left = pos.x + 'px'
-		oDiv.style.top = pos.y + 'px'
+		if(ev.keyCode == 37) {
+			oDiv.style.left = oDiv.offsetLeft - 10 + 'px'
+		} else if(ev.keyCode == 39) {
+			oDiv.style.left = oDiv.offsetLeft + 10 + 'px'
+		}
 	}
 </script>
-<body style="height: 2000px;">
+<body>
 	<div id="div1"></div>
 </body>
 </html>

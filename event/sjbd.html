@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+	</style>
+	<script src="util.js"></script>
+	<script>
+		window.onload = function () {
+			var oBtn = document.getElementById('btn1')
+			myAddEvent(oBtn, 'click', function() {
+				console.log('asdfas333333333333333fda')
+				
+			})
+			// IE下 attachEvent
+			// oBtn.attachEvent('onclick', function() {
+			// 	console.log('123')
+			// })
+			// oBtn.addEventListener('click', function () {
+			// 	console.log('asdfasfda')
+			// }, false)
+			// oBtn.addEventListener('click', function () {
+			// 	console.log('asdfas333333333333333fda')
+			// }, false)
+		}
+	</script>
+
+</head>
+
+<body>
+	<button id="btn1">按钮</button>
+</body>
+
+</html>

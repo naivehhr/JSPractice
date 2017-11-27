@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+#div1 {
+    float: left; 
+    width: 100px; 
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+</head>
+<body>
+<div  draggable="true" id="div1">
+	我要飞了
+</div>
+<script>
+	window.onload = function() {
+		var oDiv = document.getElementById('div1')
+		oDiv.ondragstart = function() {
+			console.log('123')
+		}
+	}
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+    document.getElementById("demo").innerHTML = "开始拖动 p 元素";
+}
+function dragEnd(event) {
+    document.getElementById("demo").innerHTML = "完成 p 元素的拖动。";
+}
+function allowDrop(event) {
+    event.preventDefault();
+}
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+</script>
+
+</body>
+</html>

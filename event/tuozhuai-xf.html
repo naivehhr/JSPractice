@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<style>
+	#div1 {
+		width: 100px;
+		height: 100px;
+		background: red;
+		position: absolute;
+	}
+	#div2 {
+		width: 800px;
+		height: 700px;
+		background: gray;
+		position: relative;
+	}
+</style>
+<script>
+
+	window.onload = function () {
+		var oDiv = document.getElementById('div1')
+		var oDiv2 = document.getElementById('div2')
+		var disX = 0;
+		var disY = 0;
+		oDiv.onmousedown = function (ev) {
+			disX = ev.clientX - oDiv.offsetLeft;
+			disY = ev.clientY - oDiv.offsetTop;
+			document.onmousemove = function (ev) {
+				let l = ev.clientX - disX
+				let t = ev.clientY - disY
+				// 设置吸附的效果喽
+				if (l < 50) {
+					l = 0
+				} else if (l > oDiv2.clientWidth - oDiv.offsetWidth) {
+					l = oDiv2.clientWidth - oDiv.offsetWidth
+				}
+				if (t < 50) {
+					t = 0
+				} else if (t > oDiv2.clientHeight - oDiv.offsetHeight) {
+					t = oDiv2.clientHeight - oDiv.offsetHeight
+				}
+				oDiv.style.left = l + 'px';
+				oDiv.style.top = t + 'px';
+
+			}
+			document.onmouseup = function () {
+				document.onmousemove = null; // 防止鼠标快速划出范围了就不会动的问题
+				document.onmouseup = null;
+			}
+			return false
+		}
+	}
+</script>
+
+<body>
+	<div id="div2">
+		<div id="div1">
+
+		</div>
+	</div>
+</body>
+
+</html>
