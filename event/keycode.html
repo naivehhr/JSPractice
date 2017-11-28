@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,22 +13,69 @@
 		height: 100px;
 		background: red;
 		position: absolute;
+		/* bottom: 10px; */
 	}
 </style>
 <script>
 	// document.onkeydown = function(ev) {
 	// 	alert(ev.keyCode)
 	// }
-	document.onkeydown = function(ev) {
+	document.onkeydown = function (ev) {
 		var oDiv = document.getElementById('div1')
-		if(ev.keyCode == 37) {
+		console.log('ev.keyCode', ev.keyCode)
+		if (ev.keyCode == 37) {
 			oDiv.style.left = oDiv.offsetLeft - 10 + 'px'
-		} else if(ev.keyCode == 39) {
+		} else if (ev.keyCode == 39) {
 			oDiv.style.left = oDiv.offsetLeft + 10 + 'px'
 		}
 	}
+
+	// 下面是解决连续输入首次卡顿问题的
+	// window.onload = function () {
+	// 	var left = false
+	// 	var right = false
+	// 	var oDiv = document.getElementById('div1')
+	// 	setInterval(function () {
+	// 		if (left) {
+	// 			oDiv.style.left = oDiv.offsetLeft - 10 + 'px'
+	// 		} else if (right) {
+	// 			oDiv.style.left = oDiv.offsetLeft + 10 + 'px'
+	// 		}
+	// 	}, 10)
+	// 	document.onkeydown = function (ev) {
+	// 		var ev = ev || event
+	// 		var code = ev.keyCode
+	// 		switch (code) {
+	// 			case 37:
+	// 				left = true
+	// 				break;
+	// 			case 39:
+	// 				right = true
+	// 				break;
+	// 			default:
+	// 		}
+	// 	}
+	// 	document.onkeyup = function (ev) {
+	// 		var ev = ev || event
+	// 		var code = ev.keyCode
+	// 		switch (code) {
+	// 			case 37:
+	// 				left = false
+	// 				break;
+	// 			case 39:
+	// 				right = false
+	// 				break;
+	// 			default:
+	// 		}
+	// 	}
+	// }
 </script>
+
 <body>
+	<div style="position: relative">
 	<div id="div1"></div>
+	
+	</div>
 </body>
+
 </html>
