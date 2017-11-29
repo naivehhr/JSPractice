@@ -38,3 +38,24 @@ Person.prototype.getNameArrow = () => {
 }
 let p = new Person()
 console.log(p.getName())
+
+
+class People {
+	constructor(){
+		this.myname = 'myname'
+	}
+	getName(){
+		// 如果btn点击是view代码中没有bind this 这里就丢失了
+		return this.myname
+	}
+
+
+	// 在非React中用不到这样定义的吧
+	getNameArrow = () => {
+		// 这个this 就指的是People喽
+		return this.myname
+	}
+}
+
+let peo = new People()
+console.log(peo.getName());
