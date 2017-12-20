@@ -41,3 +41,17 @@ p.then(d => {
 
 let p1 = Promise.resolve(3)
 let p2 = Promise.resolve(p1)
+
+
+
+let pp = new Promise((resolve, reject) => {
+  resolve('123')
+})
+
+pp.then(data => {
+  console.log('data=>' + data)
+  return  Promise.resolve('asdf')
+})
+.then(data => {
+  console.log('data1=>' + data)
+})
