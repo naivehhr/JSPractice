@@ -55,3 +55,17 @@ pp.then(data => {
 .then(data => {
   console.log('data1=>' + data)
 })
+
+
+
+// 并行的方式
+let pp = new Promise((resolve, reject) => {
+  resolve('123')
+})
+
+pp.then(data => {
+  console.log('data=>' + data)
+})
+pp.then(data => {
+  console.log('data1=>' + data)
+})
